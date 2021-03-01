@@ -1,0 +1,28 @@
+#!/bin/bash
+
+CC=gcc
+CXX=g++
+FC=gfortran
+
+BUILD_TYPE=Release
+
+BUILD_TESTS=TRUE
+
+MPI_ENABLED=TRUE
+XACC_DIR=$HOME/Quantum/XACC/installdir/xacc
+EXATN_DIR=$HOME/Quantum/XACC/installdir/exatn
+
+BLAS_LIB=MKL
+INTEL_ROOT=/opt/intel
+
+cmake \
+  -DCMAKE_BUILD_TYPE=${BUILD_TYPE} \
+  -DCMAKE_C_COMPILER=${CC} \
+  -DCMAKE_CXX_COMPILER=${CXX} \
+  -DCMAKE_Fortran_COMPILER=${FC} \
+  -DCMAKE_INSTALL_PREFIX=${XACC_DIR} \
+  -DTNQVM_BUILD_TESTS=${BUILD_TESTS} \
+  -DTNQVM_MPI_ENABLED=${MPI_ENABLED} \
+  -DXACC_DIR=${XACC_DIR} \
+  -DEXATN_DIR=${EXATN_DIR} \
+  ..
